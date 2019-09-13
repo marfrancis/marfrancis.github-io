@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	
+	<div class="container">
+		<div class="row cards"></div>
+	</div>
+
+	<!-- 3.	Crie um script em uma página hospedada no github (https://pages.github.com/) onde exiba 6 fotos obtidas através da API do Flickr. Informe apenas a URL para o exemplo que criou. -->
+	<div id="flickr"></div>
+	<script>
+		function jsonFlickrFeed(d) {
+			let items = d.items.splice(0,6);
+			for(let i in items) {
+				console.log(items[i]);
+				$('.cards').append(`
+					<div class="col-4 mb-4">
+					<div class="card">
+					<img class="card-img-top" style="background-image:url(${items[i].media.m}); background-size:cover; background-position:center; width:100%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlDRDhDQTI0NTNCQjExRTdCNjIwOTFGN0VCOTBGQTgyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlDRDhDQTI1NTNCQjExRTdCNjIwOTFGN0VCOTBGQTgyIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OUNEOENBMjI1M0JCMTFFN0I2MjA5MUY3RUI5MEZBODIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OUNEOENBMjM1M0JCMTFFN0I2MjA5MUY3RUI5MEZBODIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7PtUUyAAAAF0lEQVR42mL8//8/AzJgYkADGAIAAQYAkzkDAwxZKisAAAAASUVORK5CYII=" alt="${items[i].title}">
+					<div class="card-body">
+					<h4 class="card-title">${items[i].title}</h4>
+					</div>
+					</div>
+					</div>
+					`);
+			}
+		}
+	</script>
+	<script src="https://api.flickr.com/services/feeds/photos_public.gne?format=json"></script>
+
+	
+
+</body>
+</html>
